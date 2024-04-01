@@ -13,8 +13,10 @@ import importlib_resources as pkg_resources
 from . import templates
 from .utils import _close_temp_files
 
-multitrack_template = pkg_resources.read_text(templates, 'multitrack.html')
-
+# multitrack_template = pkg_resources.read_text(templates, 'multitrack.html')
+inp_file = (pkg_resources.files(templates) / 'multitrack.html')
+with inp_file.open("rb") as f:  # or "rt" as text file with universal newlines
+    multitrack_template = f.read()
 
 def _check_imports():
     try:
